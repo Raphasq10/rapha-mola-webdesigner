@@ -1,0 +1,154 @@
+/* estilos de fontes------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+
+body {
+    background-color: #222222; /* Fundo cinza escuro */
+    overflow-x: hidden; /* IMPORTANTE: Esconde qualquer conteúdo que exceda a largura da tela horizontalmente */
+    
+}
+
+.linktree-container {
+    max-width: 500px; /* Largura máxima para centralizar o conteúdo */
+    margin: 0 auto; /* Centraliza o container na tela */
+}
+
+/* Seção do Perfil */
+.profile-section {
+    width: 100%;
+    max-width: 500px; /* Limita a largura do bloco imagem + texto para centralização */
+    margin: 0 auto; /* Centraliza o bloco na página */
+    padding: 0 15px; /* Adiciona um padding nas laterais para não "colar" na borda da tela */
+    box-sizing: border-box;
+    /* As classes d-flex, align-items-center, justify-content-center já estão no HTML no <header> */
+}
+
+.profile-picture-wrapper {
+    flex-shrink: 0; /* Impede que a imagem encolha em telas pequenas */
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    background-color: #d8d8d8; /* Cor cinza claro para o placeholder */
+    border-radius: 50%;
+    border: 3px solid #DDAA00; /* Borda dourada */
+    overflow: hidden;
+    /* Se você estiver usando uma tag <img> dentro, centralize-a */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-picture img { /* Estilo para a imagem real dentro do círculo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-text-content {
+    flex-grow: 1; /* Permite que este bloco ocupe o espaço restante */
+    min-width: 0; /* Permite que o conteúdo encolha sem transbordar em telas pequenas */
+    /* Remova qualquer 'position: relative;' que possa ter sido adicionado aqui anteriormente,
+       pois precisamos que a linha se posicione em relação ao .webdesigner-title */
+    display: flex; /* Torna o bloco de texto um container flexível */
+    flex-direction: column; /* Empilha o h1 e o p verticalmente */
+    justify-content: center; /* Centraliza verticalmente o h1 e o p dentro do flex container */
+    /* Adicione uma margem à direita para dar espaço entre o bloco de texto e onde a linha começará */
+    margin-right: 10px;
+}
+
+h1, h3 {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; /* CORREÇÃO AQUI */
+    font-size: 3rem; /* Tamanho da fonte para o nome */
+    letter-spacing: 1px;
+    font-weight: 600;
+    line-height: 1.2; /* Ajuda no alinhamento vertical */
+    /* text-white, mb-1, text-nowrap são classes do Bootstrap */
+}
+
+.webdesigner-title {
+    color: #DDAA00; /* Cor dourada para o título "Webdesigner" */
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap; /* Impede que o texto "WEBDESIGNER" quebre em várias linhas */
+    position: relative; /* **IMPORTANTE**: Faz com que o pseudo-elemento ::after seja posicionado em relação a este elemento */
+    display: inline-block; /* Essencial para que a largura do elemento seja calculada corretamente e o 'left' do ::after funcione */
+    /* Remova quaisquer propriedades de 'display: flex', 'align-items', 'gap' que possam ter sido adicionadas aqui */
+}
+
+.webdesigner-title::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Alinha verticalmente o meio da linha com o meio do texto "WEBDESIGNER" */
+    transform: translateY(-10%); /* Ajusta o alinhamento vertical para ser preciso */
+    
+    left: calc(40% + 15px); /* Inicia a linha 15px depois do final do texto "WEBDESIGNER" */
+    
+    /* ESTA É A MUDANÇA PRINCIPAL PARA FAZER A LINHA ESTICAR ATÉ A BORDA DA TELA */
+    width: 200vw; /* Define uma largura muito grande (200% da largura da viewport) */
+    right: auto; /* Garante que 'right' não interfira com a largura grande */
+    
+    height: 2px;
+    background-color: #DDAA00;
+    z-index: 1; /* Garante que a linha apareça acima de outros elementos se houver */
+}
+
+
+/* Seção dos Links */
+.links-section {
+    max-width: 400px; /* Limita a largura dos links para desktop */
+}
+
+.link-card {
+    background-color: #DDAA00; /* Cor de fundo dourada para os botões */
+    color: #fff; /* Cor do texto dentro dos botões */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+}
+
+.link-card:hover {
+    transform: translateY(-3px); /* Efeito de levantar no hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: #e4e4e4; /* Garante que a cor do texto não mude no hover */
+}
+
+.link-card .icon-wrapper {
+    min-width: 45px; /* Garante que o ícone tenha espaço suficiente */
+    text-align: center;
+}
+
+.link-card .link-title {
+    font-size: 1.1rem; /* Tamanho do título do link */
+    font-weight: 400;
+}
+
+.link-card .link-description {
+    font-size: 0.85rem; /* Tamanho da descrição do link */
+    color: #f1f1f1; /* Uma cor um pouco mais escura para a descrição */
+}
+
+/* Responsividade para telas maiores (desktop) */
+@media (min-width: 768px) {
+    .linktree-container {
+        padding-top: 50px; /* Mais espaço no topo para telas maiores */
+        padding-bottom: 50px;
+    }
+
+    .links-section {
+        max-width: 450px; /* Aumenta um pouco a largura dos links em desktops */
+    }
+
+    .link-card {
+        padding: 1rem 1.5rem; /* Mais padding para os botões em desktop */
+    }
+
+    .link-card .link-title {
+        font-size: 1.2rem;
+    }
+
+    .link-card .link-description {
+        font-size: 0.9rem;
+    }
+}

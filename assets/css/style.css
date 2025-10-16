@@ -6,6 +6,7 @@
 /* ESTILOS GERAIS -------------------------*/
 
 
+
 h1, h2, h3 {
     font-family: 'Poppins', sans-serif;
 }
@@ -133,7 +134,7 @@ nav.navbar {
 }
 
 
-/* Sessão Hero  HOME    /////////////////////////////////////////------------------------------*/
+/* ||||||||||||||||||||    Sessão Hero  HOME    /////////////////////////////////////////------------------------------*/
 .hero {
     background-image: url(../img/background_hero_rapha.png);
     background-repeat: no-repeat;
@@ -205,7 +206,7 @@ margin-top: 20px;
 
 
 
-/* Sessão sobre HOME /////////////////////////////////////////------------------------------*/
+/* |||||||||||||||||   Sessão sobre HOME /////////////////////////////////////////------------------------------*/
 
 
 .sobre {
@@ -256,7 +257,7 @@ padding-bottom: 58px;
     height: 617px;
 }
 
-/* Sessão Portfólio HOME /////////////////////////////////////////------------------------------*/
+/* |||||||||||||||    Sessão Portfólio HOME /////////////////////////////////////////------------------------------*/
 
 
 #portfolio {
@@ -368,7 +369,7 @@ padding-bottom: 58px;
 
 
 
-/* Sessão blog /////////////////////////////////////////------------------------------*/
+/* ||||||||||||||||   Sessão blog /////////////////////////////////////////------------------------------*/
 
 .title {
     align-items: center;
@@ -396,26 +397,46 @@ padding-bottom: 58px;
     
 }
 
+@media (max-width: 767.98px) {
+    
+    .blog-heading .row > div:last-child {
+        padding-top: 15px; 
+        justify-content: end !important; 
+    }
+}
+
 .blog-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    /* align-items: flex-start; */
+    align-items: stretch;
     margin: 20px 0px;
     flex-wrap: wrap;
     
 
 }
 
+.blog-box,
+.blog-text {
+    box-sizing: border-box; /* Garante que padding e border não causem overflow */
+}
+
+
 .blog-box {
     width: 343px;
     background-color: #fff;
     border: 1px solid #ececec;
     margin: 20px;
+
+       /* NOVO: Tornar o box um Flex Container para que o filho preencha a altura */
+    display: flex; /* <-- MUITO IMPORTANTE */
+    flex-direction: column; /* <-- MUITO IMPORTANTE */
 }
 
+
 .blog-img {
-    width: 343px;
-    height: 160px;
+   width: 100%; /* <--- ALTERADO: Garante que a imagem sempre preencha a largura total do .blog-box */
+    height: 250px;
     overflow: hidden;
 }
 
@@ -430,6 +451,9 @@ padding-bottom: 58px;
     padding: 30px;
     display: flex;
     flex-direction: column;
+    /* height: 100%; <-- REMOVA ESTA PROPRIEDADE SE A DO FLEX-GROW FOR USADA */
+    flex-grow: 1; /* <-- NOVO: Força o .blog-text a ocupar todo o espaço vertical restante */
+    justify-content: space-between; /* <-- OPCIONAL: Distribui melhor o conteúdo interno */
 }
 
 .blog-text span {
@@ -462,6 +486,7 @@ padding-bottom: 58px;
     color:#0f0f0f;
     text-decoration: none;
     padding-top: 10px;
+   margin-top: auto; /* <--- NOVO: Isso o empurra para baixo */
 }
 
 .blog-text a:hover {
@@ -502,7 +527,9 @@ padding-bottom: 58px;
     }
 }
 
-/* Sessão Rodapé /////////////////////////////////////////------------------------------*/
+
+
+/* |||||||||||||||   Sessão Rodapé /////////////////////////////////////////------------------------------*/
 footer {
     padding-top: 75px;
     padding-bottom: 2px;

@@ -9,6 +9,10 @@ body {
     
 }
 
+p, li {
+    font-family: 'rubik', sans-serif;
+}
+
 .linktree-container {
     max-width: 500px; /* Largura máxima para centralizar o conteúdo */
     margin: 0 auto; /* Centraliza o container na tela */

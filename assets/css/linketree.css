@@ -22,9 +22,7 @@ p, li {
 /* Seção do Perfil */
 .profile-section {
        /* 1. Puxa a seção para fora, cancelando o padding de 1rem do container pai */
-    margin-left: -1rem;
-    margin-right: -1rem;
-
+  
     /* 2. Devolve o padding para o conteúdo INTERNO (foto e texto) */
     padding-left: 1rem;
     padding-right: 1rem;
@@ -102,6 +100,7 @@ h1, h3 {
     height: 2px;
     background-color: #DDAA00;
     margin-left: 15px; /* Cria um espaço entre o texto e o início da linha */
+    
     /* --- FIM DAS MUDANÇAS --- */
 }
 
@@ -162,4 +161,13 @@ h1, h3 {
     .link-card .link-description {
         font-size: 0.9rem;
     }
+
+    
+}
+
+@media (max-width: 480px) { 
+    .webdesigner-title::after {
+        margin-right: -50px;
+    }
+
 }

@@ -16,16 +16,28 @@ p, li {
 .linktree-container {
     max-width: 500px; /* Largura máxima para centralizar o conteúdo */
     margin: 0 auto; /* Centraliza o container na tela */
+    padding: 0 15px;
 }
 
 /* Seção do Perfil */
 .profile-section {
-    width: 100%;
-    max-width: 500px; /* Limita a largura do bloco imagem + texto para centralização */
-    margin: 0 auto; /* Centraliza o bloco na página */
-    padding: 0 15px; /* Adiciona um padding nas laterais para não "colar" na borda da tela */
+       /* 1. Puxa a seção para fora, cancelando o padding de 1rem do container pai */
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    /* 2. Devolve o padding para o conteúdo INTERNO (foto e texto) */
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    /* 3. Garante que o padding não altere a largura total do elemento */
     box-sizing: border-box;
-    /* As classes d-flex, align-items-center, justify-content-center já estão no HTML no <header> */
+
+    /* Suas propriedades originais (não precisam ser repetidas se já estão no HTML) */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .profile-picture-wrapper {
@@ -59,16 +71,15 @@ p, li {
     flex-direction: column; /* Empilha o h1 e o p verticalmente */
     justify-content: center; /* Centraliza verticalmente o h1 e o p dentro do flex container */
     /* Adicione uma margem à direita para dar espaço entre o bloco de texto e onde a linha começará */
-    margin-right: 10px;
+    
 }
 
 h1, h3 {
-    font-family: 'Poppins', Arial, Helvetica, sans-serif; /* CORREÇÃO AQUI */
-    font-size: 3rem; /* Tamanho da fonte para o nome */
+ font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: clamp(2.2rem, 8vw, 3rem); /* <--- ALTERAÇÃO AQUI */
     letter-spacing: 1px;
     font-weight: 600;
-    line-height: 1.2; /* Ajuda no alinhamento vertical */
-    /* text-white, mb-1, text-nowrap são classes do Bootstrap */
+    line-height: 1.2;
 }
 
 .webdesigner-title {
@@ -76,32 +87,28 @@ h1, h3 {
     font-size: 1rem;
     line-height: 1.2;
     white-space: nowrap; /* Impede que o texto "WEBDESIGNER" quebre em várias linhas */
-    position: relative; /* **IMPORTANTE**: Faz com que o pseudo-elemento ::after seja posicionado em relação a este elemento */
-    display: inline-block; /* Essencial para que a largura do elemento seja calculada corretamente e o 'left' do ::after funcione */
-    /* Remova quaisquer propriedades de 'display: flex', 'align-items', 'gap' que possam ter sido adicionadas aqui */
+
+    /* --- INÍCIO DAS MUDANÇAS --- */
+    display: flex; /* Transforma o container em flex */
+    align-items: center; /* Alinha o texto e a linha verticalmente */
+    width: 100%; /* Faz o elemento ocupar toda a largura do seu container pai */
+    /* --- FIM DAS MUDANÇAS --- */
 }
 
 .webdesigner-title::after {
+     /* --- INÍCIO DAS MUDANÇAS --- */
     content: '';
-    position: absolute;
-    top: 50%; /* Alinha verticalmente o meio da linha com o meio do texto "WEBDESIGNER" */
-    transform: translateY(-10%); /* Ajusta o alinhamento vertical para ser preciso */
-    
-    left: calc(40% + 15px); /* Inicia a linha 15px depois do final do texto "WEBDESIGNER" */
-    
-    /* ESTA É A MUDANÇA PRINCIPAL PARA FAZER A LINHA ESTICAR ATÉ A BORDA DA TELA */
-    width: 200vw; /* Define uma largura muito grande (200% da largura da viewport) */
-    right: auto; /* Garante que 'right' não interfira com a largura grande */
-    
+    flex-grow: 1; /* Faz a linha crescer e ocupar o espaço restante */
     height: 2px;
     background-color: #DDAA00;
-    z-index: 1; /* Garante que a linha apareça acima de outros elementos se houver */
+    margin-left: 15px; /* Cria um espaço entre o texto e o início da linha */
+    /* --- FIM DAS MUDANÇAS --- */
 }
 
 
 /* Seção dos Links */
 .links-section {
-    max-width: 400px; /* Limita a largura dos links para desktop */
+     max-width: 100%;
 }
 
 .link-card {
